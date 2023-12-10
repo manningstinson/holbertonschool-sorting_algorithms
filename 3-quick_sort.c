@@ -1,23 +1,21 @@
 #include "sort.h"
-#include <stdint.h>
+#include <stdio.h> // Include stdio.h for printf
 
-void swap(int *a, int *b, int *array, size_t size) {
-    if (*a != *b) {  // Only print the array if a swap is going to occur
-        int temp = *a;
-        *a = *b;
-        *b = temp;
-        print_array(array, size);
-    }
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
-void print_array(int *array, size_t size) {
+void print_array(const int *array, size_t size) {
     for (size_t i = 0; i < size; ++i) {
-        printf("%d, ", array[i]);
+        printf("%d", array[i]);
+        if (i < size - 1) {
+            printf(", ");
+        }
     }
     printf("\n");
 }
-
-
 
 size_t lomuto_partition(int *array, size_t low, size_t high) {
     size_t i;
@@ -43,9 +41,7 @@ void quick_sort(int *array, size_t size) {
 void quick_sort_helper(int *array, size_t low, size_t high) {
     if (low < high) {
         size_t pi = lomuto_partition(array, low, high);
-        if (pi != 0) {
-            quick_sort_helper(array, low, pi - 1);
-        }
+        quick_sort_helper(array, low, pi);
         quick_sort_helper(array, pi + 1, high);
     }
 }
