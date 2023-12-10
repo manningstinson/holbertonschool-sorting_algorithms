@@ -13,7 +13,7 @@ void quick_sort_helper(int *array, size_t low, size_t high)
     if (low < high)
     {
         size_t partition_index = lomuto_partition(array, low, high);
-        if (partition_index > 0)
+        if (partition_index != 0) // Check if partition_index is not zero
             quick_sort_helper(array, low, partition_index - 1);
         quick_sort_helper(array, partition_index + 1, high);
     }
@@ -22,23 +22,19 @@ void quick_sort_helper(int *array, size_t low, size_t high)
 size_t lomuto_partition(int *array, size_t low, size_t high)
 {
     int pivot = array[high];
-    size_t i = low - 1;
+    size_t i = low;
 
-    size_t j;
-    for (j = low; j < high; ++j)
+    for (size_t j = low; j < high; ++j)
     {
-        if (array[j] < pivot)
+        if (array[j] <= pivot) // Include equal to pivot elements
         {
-            i++;
             swap(&array[i], &array[j]);
-            print_array(array, high + 1);
+            i++;
         }
     }
 
-    swap(&array[i + 1], &array[high]);
-    print_array(array, high + 1); 
-
-    return (i + 1);
+    swap(&array[i], &array[high]);
+    return i;
 }
 
 void swap(int *a, int *b)
