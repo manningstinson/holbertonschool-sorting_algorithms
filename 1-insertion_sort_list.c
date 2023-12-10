@@ -1,18 +1,15 @@
 #include "sort.h"
 
-void insertion_sort_list(listint_t **list)
-{
-    if (*list == NULL || (*list)->next == NULL)
+void insertion_sort_list(listint_t **list) {
+    if (list == NULL || *list == NULL || (*list)->next == NULL)
         return;
 
     listint_t *current = (*list)->next;
     listint_t *insert;
 
-    while (current != NULL)
-    {
+    while (current != NULL) {
         insert = current;
-        while (insert->prev != NULL && insert->n < insert->prev->n)
-        {
+        while (insert->prev != NULL && insert->n < insert->prev->n) {
             if (insert->next != NULL)
                 insert->next->prev = insert->prev;
             insert->prev->next = insert->next;
