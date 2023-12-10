@@ -1,8 +1,18 @@
 #include "sort.h"
 #include <stdint.h>
 
-size_t lomuto_partition(int *array, size_t low, size_t high);
-void swap(int *a, int *b);
+size_t lomuto_partition(int *array, size_t low, size_t high) {
+    size_t q = low - 1;
+    int pivot = array[high];
+    for (size_t i = low; i < high; ++i) {
+        if (array[i] <= pivot) {
+            ++q;
+            swap(&array[q], &array[i]);
+        }
+    }
+    swap(&array[q + 1], &array[high]);
+    return q + 1;
+}
 
 void quick_sort(int *array, size_t size) {
     if (size < 2) {
@@ -17,19 +27,6 @@ void quick_sort_helper(int *array, size_t low, size_t high) {
         quick_sort_helper(array, low, pi - 1);
         quick_sort_helper(array, pi + 1, high);
     }
-}
-
-size_t lomuto_partition(int *array, size_t low, size_t high) {
-    size_t q = low - 1;
-    int pivot = array[high];
-    for (size_t i = low; i < high; ++i) {
-        if (array[i] <= pivot) {
-            ++q;
-            swap(&array[q], &array[i]);
-        }
-    }
-    swap(&array[q + 1], &array[high]);
-    return q + 1;
 }
 
 void swap(int *a, int *b) {
