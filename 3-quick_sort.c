@@ -1,5 +1,5 @@
+/* 3-quick_sort.c */
 #include "sort.h"
-#include <stdio.h>
 
 void quick_sort(int *array, size_t size)
 {
@@ -7,7 +7,6 @@ void quick_sort(int *array, size_t size)
         return;
 
     quick_sort_helper(array, 0, size - 1);
-    print_array(array, size);
 }
 
 void quick_sort_helper(int *array, size_t low, size_t high)
@@ -33,10 +32,12 @@ size_t lomuto_partition(int *array, size_t low, size_t high)
         {
             i++;
             swap(&array[i], &array[j]);
+            print_array(array, high + 1);  // Print array after each swap
         }
     }
 
     swap(&array[i + 1], &array[high]);
+    print_array(array, high + 1);  // Print array after placing pivot
 
     return (i + 1);
 }
@@ -46,18 +47,4 @@ void swap(int *a, int *b)
     int temp = *a;
     *a = *b;
     *b = temp;
-}
-
-void print_array(const int *array, size_t size)
-{
-    size_t i = 0;
-
-    while (i < size)
-    {
-        if (i > 0)
-            write_char(',');
-        write_num(array[i]);
-        ++i;
-    }
-    write_char('\n');
 }
