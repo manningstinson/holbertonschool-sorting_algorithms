@@ -31,7 +31,9 @@ void quick_sort(int *array, size_t size) {
 void quick_sort_helper(int *array, size_t low, size_t high) {
     if (low < high) {
         size_t pi = lomuto_partition(array, low, high);
-        quick_sort_helper(array, low, pi - 1);
+        if (pi != 0) {
+            quick_sort_helper(array, low, pi - 1);
+        }
         quick_sort_helper(array, pi + 1, high);
     }
 }
