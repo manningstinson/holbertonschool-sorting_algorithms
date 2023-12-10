@@ -1,10 +1,20 @@
 #include "sort.h"
 #include <stdint.h>
 
-void swap(int *a, int *b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+void swap(int *a, int *b, int *array, size_t size) {
+    if (*a != *b) {
+        int temp = *a;
+        *a = *b;
+        *b = temp;
+        print_array(array, size);
+    }
+}
+
+void print_array(int *array, size_t size) {
+    for (size_t i = 0; i < size; ++i) {
+        printf("%d, ", array[i]);
+    }
+    printf("\n");
 }
 
 size_t lomuto_partition(int *array, size_t low, size_t high) {
