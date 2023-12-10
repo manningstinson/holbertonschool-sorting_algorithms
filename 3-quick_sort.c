@@ -28,7 +28,7 @@ void quick_sort_helper(int *array, size_t low, size_t high) {
 
     if (low < high) {
         pi = lomuto_partition(array, low, high);
-        quick_sort_helper(array, low, pi);       // Adjusted recursive call
+        quick_sort_helper(array, low, pi);
         quick_sort_helper(array, pi + 1, high);
     }
 }
