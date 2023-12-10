@@ -10,13 +10,6 @@ void swap(int *a, int *b, int *array, size_t size) {
     }
 }
 
-void print_array(int *array, size_t size) {
-    for (size_t i = 0; i < size; ++i) {
-        printf("%d, ", array[i]);
-    }
-    printf("\n");
-}
-
 size_t lomuto_partition(int *array, size_t low, size_t high) {
     size_t i;
     size_t q = low - 1;
