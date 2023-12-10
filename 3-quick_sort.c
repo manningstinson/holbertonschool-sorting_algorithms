@@ -30,7 +30,8 @@ size_t lomuto_partition(int *array, size_t low, size_t high, size_t size)
     int pivot = array[high];
     size_t i = low - 1;
 
-    for (size_t j = low; j < high; ++j)
+    size_t j;  // Move declaration outside of the for loop
+    for (j = low; j < high; ++j)
     {
         if (array[j] < pivot)
         {
@@ -64,4 +65,3 @@ void print_array(const int *array, size_t size)
     }
     write_char('\n');
 }
-
