@@ -31,12 +31,12 @@ size_t lomuto_partition(int *array, size_t low, size_t high)
         {
             i++;
             swap(&array[i], &array[j]);
-            print_array(array, high + 1);  // Print array after each swap
+            print_array(array, high + 1);
         }
     }
 
     swap(&array[i + 1], &array[high]);
-    print_array(array, high + 1);  // Print array after placing pivot
+    print_array(array, high + 1); 
 
     return (i + 1);
 }
