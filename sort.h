@@ -19,8 +19,6 @@ void selection_sort(int *array, size_t size);
 
 
 void print_array(const int *array, size_t size);
-void write_char(char c);
-void write_num(int num);
 void quick_sort_helper(int *array, size_t low, size_t high);
 size_t lomuto_partition(int *array, size_t low, size_t high);
 void swap(int *a, int *b);
