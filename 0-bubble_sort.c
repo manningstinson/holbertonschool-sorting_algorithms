@@ -9,10 +9,6 @@ void swap(int *a, int *b) {
 }
 
 void bubble_sort(int *array, size_t size) {
-    if (array == NULL || size < 2) {
-        return;  // No need to sort if the array is NULL or has less than 2 elements
-    }
-
     size_t i, j;
 
     for (i = 0; i < size - 1; i++) {
