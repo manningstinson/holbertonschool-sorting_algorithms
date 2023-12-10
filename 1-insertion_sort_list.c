@@ -5,8 +5,10 @@ void insertion_sort_list(listint_t **list)
     if (*list == NULL || (*list)->next == NULL)
         return;
 
-    listint_t *current = (*list)->next;
+    listint_t *current;
     listint_t *insert;
+
+    current = (*list)->next;
 
     while (current != NULL)
     {
