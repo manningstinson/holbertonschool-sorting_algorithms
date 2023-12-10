@@ -8,7 +8,7 @@ void swap(int *a, int *b) {
 }
 
 size_t lomuto_partition(int *array, size_t low, size_t high) {
-    size_t i; // Moved declaration outside the loop
+    size_t i; 
     size_t q = low - 1;
     int pivot = array[high];
     for (i = low; i < high; ++i) {
