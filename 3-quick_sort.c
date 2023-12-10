@@ -1,18 +1,14 @@
 #include "sort.h"
 
-/**
- * swap - Swaps two integers in an array
- * @a: Pointer to the first integer
- * @b: Pointer to the second integer
- */
-void swap(int *a, int *b)
+void _swap(int *array, int i, int j, size_t size)
 {
-    if (a != b)
-    {
-        *a ^= *b;
-        *b ^= *a;
-        *a ^= *b;
-    }
+	if (array[i] != array[j])
+	{
+		array[i] ^= array[j];
+		array[j] ^= array[i];
+		array[i] ^= array[j];
+		print_array(array, size);
+	}
 }
 
 /**
