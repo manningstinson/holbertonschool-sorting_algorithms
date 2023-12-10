@@ -1,5 +1,5 @@
 #include "sort.h"
-#include <stdio.h> // Include stdio.h for printf
+#include <stdio.h>
 
 void swap(int *a, int *b) {
     int temp = *a;
