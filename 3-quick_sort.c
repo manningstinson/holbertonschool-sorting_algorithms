@@ -1,8 +1,8 @@
 #include "sort.h"
 
 /* Function Prototypes */
-void quick_sort_helper(int *array, size_t low, size_t high, size_t size);
-size_t lomuto_partition(int *array, size_t low, size_t high, size_t size);
+void quick_sort_helper(int *array, size_t low, size_t high);
+size_t lomuto_partition(int *array, size_t low, size_t high);
 void swap(int *a, int *b);
 
 void quick_sort(int *array, size_t size)
@@ -10,27 +10,27 @@ void quick_sort(int *array, size_t size)
     if (!array || size < 2)
         return;
 
-    quick_sort_helper(array, 0, size - 1, size);
+    quick_sort_helper(array, 0, size - 1);
     print_array(array, size);
 }
 
-void quick_sort_helper(int *array, size_t low, size_t high, size_t size)
+void quick_sort_helper(int *array, size_t low, size_t high)
 {
     if (low < high)
     {
-        size_t partition_index = lomuto_partition(array, low, high, size);
+        size_t partition_index = lomuto_partition(array, low, high);
         if (partition_index > 0)
-            quick_sort_helper(array, low, partition_index - 1, size);
-        quick_sort_helper(array, partition_index + 1, high, size);
+            quick_sort_helper(array, low, partition_index - 1);
+        quick_sort_helper(array, partition_index + 1, high);
     }
 }
 
-size_t lomuto_partition(int *array, size_t low, size_t high, size_t size)
+size_t lomuto_partition(int *array, size_t low, size_t high)
 {
     int pivot = array[high];
     size_t i = low - 1;
 
-    size_t j;  // Move declaration outside of the for loop
+    size_t j;
     for (j = low; j < high; ++j)
     {
         if (array[j] < pivot)
