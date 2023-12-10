@@ -7,18 +7,19 @@
  * @j: variable int
  * @size: variable size
  */
-void _swap(int *array, int i, int j)
-{
-    /* Check if values are different to avoid unnecessary operations */
-    if (array[i] != array[j])
-    {
-        /* XOR operation to swap element values */
-        array[i] ^= array[j];
-        array[j] ^= array[i];
-        array[i] ^= array[j];
-    }
-}
 
+void _swap(int *array, int i, int j, size_t size)
+{
+	int tmp;
+
+	if (array[i] != array[j])
+	{
+		tmp = array[i];
+		array[i] = array[j];
+		array[j] = tmp;
+		print_array(array, size);
+	}
+}
 
 /**
  * partition - function sort a partition
