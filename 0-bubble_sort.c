@@ -1,15 +1,12 @@
 #include <stdio.h>
 #include "sort.h"
 
-<<<<<<< HEAD
-
-=======
 /**
  * swap - Swaps two integers in an array
  * @a: Pointer to the first integer
  * @b: Pointer to the second integer
  */
->>>>>>> f4c91ef53e75f3e87d4e647f9e1932e20138498b
+
 void swap(int *a, int *b)
 {
 	int temp = *a;
