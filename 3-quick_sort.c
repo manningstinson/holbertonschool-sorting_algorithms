@@ -1,65 +1,36 @@
 #include "sort.h"
-#include <stdio.h>
+#include <stdint.h>
 
-void print_array(int *array, size_t size)
-{
-    size_t i;
-    for (i = 0; i < size; i++)
-    {
-        printf("%d, ", array[i]);
-    }
-    printf("\n");
-}
-
-void quick_sort(int *array, size_t size)
-{
-    if (!array || size < 2)
+void quick_sort(int *array, size_t size) {
+    if (size < 2) {
         return;
-
-    print_array(array, size); /* Print array before sorting */
-    quick_sort_helper(array, 0, size - 1);
-    print_array(array, size); /* Print array after sorting */
-}
-
-void quick_sort_helper(int *array, size_t low, size_t high)
-{
-    size_t partition_index;
-
-    if (low < high)
-    {
-        partition_index = lomuto_partition(array, low, high);
-        if (partition_index != 0) /* Check if partition_index is not zero */
-            quick_sort_helper(array, low, partition_index - 1);
-        quick_sort_helper(array, partition_index + 1, high);
     }
+    quick_sort_helper(array, 0, size - 1);
 }
 
-size_t lomuto_partition(int *array, size_t low, size_t high)
-{
-    int pivot;
-    size_t i, j;
-
-    pivot = array[high];
-    i = low;
-
-    for (j = low; j < high; ++j)
-    {
-        if (array[j] <= pivot) /* Include equal to pivot elements */
-        {
-            swap(&array[i], &array[j]);
-            i++;
+int lomuto_partition(int *array, size_t low, size_t high) {
+    size_t q = low - 1;
+    int pivot = array[high];
+    for (size_t i = low; i < high; ++i) {
+        if (array[i] <= pivot) {
+            ++q;
+            swap(&array[q], &array[i]);
         }
     }
-
-    swap(&array[i], &array[high]);
-    return i;
+    swap(&array[q + 1], &array[high]);
+    return q + 1;
 }
 
-void swap(int *a, int *b)
-{
-    int temp;
-
-    temp = *a;
+void swap(int *a, int *b) {
+    int temp = *a;
     *a = *b;
     *b = temp;
+}
+
+void quick_sort_helper(int *array, size_t low, size_t high) {
+    if (low < high) {
+        size_t pi = lomuto_partition(array, low, high);
+        quick_sort_helper(array, low, pi - 1);
+        quick_sort_helper(array, pi + 1, high);
+    }
 }
